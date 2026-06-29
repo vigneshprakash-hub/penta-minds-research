@@ -220,16 +220,6 @@
           justify-content:center;
           width:46px
         }
-        .menu-toggle span,.menu-toggle span:before,.menu-toggle span:after {
-          background:#fff;
-          border-radius:999px;
-          content:"";
-          display:block;
-          height:2px;
-          position:absolute;
-          transition:.2s;
-          width:21px
-        }
         .menu-toggle span {
           position:relative
         }
@@ -1809,17 +1799,6 @@ h4{
           passive:true
         }
         );
-        menuToggle.addEventListener("click", () => {
-    menuToggle.classList.toggle("open");
-    navLinks.classList.toggle("show");
-});
-
-document.querySelectorAll(".nav-link").forEach(link => {
-    link.addEventListener("click", () => {
-        menuToggle.classList.remove("open");
-        navLinks.classList.remove("show");
-    });
-});
           }
           
         }
