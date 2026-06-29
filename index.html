@@ -1153,7 +1153,224 @@
           }
           
         }
-        
+
+      /* ===========================
+   MOBILE RESPONSIVE PATCH
+=========================== */
+
+@media (max-width:1024px){
+
+.container{
+    width:calc(100% - 40px);
+}
+
+.hero{
+    padding:120px 0 70px;
+    min-height:auto;
+}
+
+.hero-content{
+    max-width:100%;
+    text-align:center;
+}
+
+.hero h1,
+.hero h2{
+    font-size:clamp(2.2rem,9vw,3.8rem);
+    line-height:1.08;
+}
+
+.hero p{
+    font-size:1rem;
+    margin-inline:auto;
+}
+
+.button-row{
+    justify-content:center;
+}
+
+.stats-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.grid,
+.cards,
+.features,
+.timeline,
+.project-grid,
+.team-grid,
+.toolkit-grid{
+    grid-template-columns:1fr !important;
+}
+
+.section{
+    padding:75px 0;
+}
+
+.section-title{
+    font-size:2.3rem;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+}
+
+      @media (max-width:768px){
+
+.site-header{
+    padding:0;
+}
+
+.nav-wrap{
+    min-height:72px;
+}
+
+.menu-toggle{
+    display:flex;
+}
+
+.nav-links{
+
+    position:absolute;
+    top:72px;
+    left:0;
+    right:0;
+
+    display:flex;
+    flex-direction:column;
+
+    background:#0D2145;
+
+    padding:15px;
+
+    gap:10px;
+
+    transform:translateY(-20px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+}
+
+.nav-links.show{
+
+    transform:translateY(0);
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.nav-link{
+
+    width:100%;
+
+    justify-content:center;
+
+    color:white;
+
+    padding:14px;
+
+}
+
+.hero{
+
+    padding-top:120px;
+
+}
+
+.hero h1,
+.hero h2{
+
+    font-size:2.2rem;
+
+}
+
+.button-row{
+
+    flex-direction:column;
+
+}
+
+.btn{
+
+    width:100%;
+
+}
+
+.stats-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.container{
+
+    width:calc(100% - 28px);
+
+}
+
+.section{
+
+    padding:65px 0;
+
+}
+
+      }
+
+      .card,
+.feature-card,
+.project-card,
+.team-card,
+.toolkit-card{
+
+    width:100%;
+
+    min-width:0;
+
+}
+
+      .hero img,
+.hero-image img,
+.team-image img,
+.project-image img{
+
+    width:100%;
+
+    height:auto;
+
+    object-fit:cover;
+
+}
+
+      table{
+
+    display:block;
+
+    overflow-x:auto;
+
+    white-space:nowrap;
+
+      }
+
+      p,
+h1,
+h2,
+h3,
+h4{
+
+    overflow-wrap:break-word;
+
+    word-break:break-word;
+
+}
+      
     </style>
   </head>
   <body class="is-loading">
@@ -1592,19 +1809,17 @@
           passive:true
         }
         );
-        menuToggle.addEventListener('click',()=>{
-          const o=navLinks.classList.toggle('open');
-          menuToggle.classList.toggle('open',o);
-          menuToggle.setAttribute('aria-expanded',String(o));
-          menuToggle.setAttribute('aria-label',o?'Close navigation menu':'Open navigation menu')
-        }
-        );
-        document.addEventListener('click',e=>{
-          if(!navLinks.contains(e.target)&&!menuToggle.contains(e.target)){
-            navLinks.classList.remove('open');
-            menuToggle.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded','false');
-            menuToggle.setAttribute('aria-label','Open navigation menu')
+        menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("open");
+    navLinks.classList.toggle("show");
+});
+
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+        menuToggle.classList.remove("open");
+        navLinks.classList.remove("show");
+    });
+});
           }
           
         }
